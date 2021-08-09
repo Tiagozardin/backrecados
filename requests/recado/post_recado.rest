@@ -1,0 +1,8 @@
+POST http://localhost:8080/recado HTTP/1.1
+content-type: application/json
+ 
+ {
+    "titulo": "Titulo",
+    "descricao": "Detalhes",
+    "loginID": 1
+ }
