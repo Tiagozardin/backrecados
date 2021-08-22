@@ -9,13 +9,13 @@ export class CreateTableRecados1628202506186 implements MigrationInterface {
               columns: [
                 {
                   name: "id",
-                  type: "serial",
+                  type: "uuid",
                   isPrimary: true,
                   isNullable: false,
                 },
                 {
                     name: "id_login",
-                    type: "int",
+                    type: "uuid",
                     isNullable: false, 
                 },
                 {

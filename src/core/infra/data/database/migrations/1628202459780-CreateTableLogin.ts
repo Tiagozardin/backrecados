@@ -9,7 +9,7 @@ export class CreateTableLogin1628202459780 implements MigrationInterface {
                 columns:[
                     {
                         name: "id",
-                        type: "serial",
+                        type: "uuid",
                         isPrimary: true,
                         isNullable: false,
                       },

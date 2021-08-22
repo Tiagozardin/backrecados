@@ -17,7 +17,7 @@ export default class RecadoRepository {
         });
       }
 
-      async getRecado(id: number): Promise<Recados | undefined> {
+      async getRecado(id: string): Promise<Recados | undefined> {
         const recado = await RecadoEntity.findOne({
           where: { id: id},
         });
@@ -46,7 +46,7 @@ export default class RecadoRepository {
         return Object.assign({}, params, recado);
       }
 
-      async update(id: number, params: Recados): Promise<Recados | undefined> {
+      async update(id: string, params: Recados): Promise<Recados | undefined> {
         const {titulo, descricao} = params;
 
         const result = await RecadoEntity.update(id, {
@@ -56,7 +56,7 @@ export default class RecadoRepository {
         return Object.assign({}, params, result);
       }
 
-      async delete(id: number) {
+      async delete(id: string) {
          return await RecadoEntity.delete(id);
         
       }

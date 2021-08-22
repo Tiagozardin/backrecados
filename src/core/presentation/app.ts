@@ -2,7 +2,7 @@ import { compareSync } from "bcrypt";
 import express, { Request, Response, Router } from "express";
 import cors from "cors";
 import LoginRoutes from "../../features/login/presentation/routes";
-import RecadoRoutes from "../../features/recado/presentation/routes";
+import RecadoRoutes from "../../features/recado/presentation/routes/routes";
 
 
 export default class App {

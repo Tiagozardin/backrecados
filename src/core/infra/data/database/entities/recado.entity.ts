@@ -15,10 +15,10 @@ import { LoginEntity } from "./index";
   @Entity({ name: "recados"})
   export class RecadoEntity extends BaseEntity {
     @PrimaryGeneratedColumn()
-    id?: number;
+    id?: string;
 
     @Column({ name: "id_login" })
-    loginID: number;
+    loginID: string;
 
     @Column({name: 'titulo'})
     titulo: string;
@@ -30,7 +30,7 @@ import { LoginEntity } from "./index";
     @JoinColumn({ name: "id_login", referencedColumnName: "id" })
     login?: LoginRoutes
   
-    constructor(titulo: string, descricao: string, loginID: number) {
+    constructor(titulo: string, descricao: string, loginID: string) {
       super();
       this.titulo = titulo;
       this.descricao = descricao;

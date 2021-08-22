@@ -20,10 +20,10 @@ export default class LoginController implements MvcController {
     this.#cache = cache;
   }
 
-  public async index() {
+  public async index() : Promise<HttpResponse>{
     try {
       //verifico se existe no cache
-      const cache = await this.#cache.get("login:all");
+      const cache = await this.#cache.get("logins:all");
       //valido se exite cache
       if(cache) {
         return ok(cache.map((login: any) => Object.assign({}, login, {cache: true})));
@@ -31,7 +31,7 @@ export default class LoginController implements MvcController {
 
       const logins = await this.#repository.getLogins();
 
-      await this.#cache.set("login:all", logins);
+      await this.#cache.set("logins:all", logins);
 
       return ok(logins);
     } catch (error) {
@@ -44,6 +44,10 @@ export default class LoginController implements MvcController {
 
     try {
       const result = await this.#repository.delete(uid);
+
+      await this.#cache.del('logins:all');
+      await this.#cache.del(`login:${uid}`);
+
       return ok(result);
     } catch (error) {
       return serverError();
@@ -56,8 +60,8 @@ export default class LoginController implements MvcController {
     try{
       const result = await this.#repository.update(uid, request.body);
 
-      await this.#cache.del("login:all");
-
+      await this.#cache.del("logins:all");
+      await this.#cache.del(`login:${uid}`);
       return ok(result);
 
     }catch (error){
@@ -69,7 +73,7 @@ export default class LoginController implements MvcController {
     try {
       const result = await this.#repository.create(request.body);
 
-      this.#cache.del("login:all");
+      this.#cache.del("logins:all");
       return ok(result);
       
     } catch (error) {

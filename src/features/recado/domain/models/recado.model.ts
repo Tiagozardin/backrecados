@@ -1,6 +1,6 @@
 export interface Recados {
-  id?: number;
+  id?: string;
   titulo?: string;
   descricao?: string;
-  loginID?: number;
+  loginID?: string;
 }
